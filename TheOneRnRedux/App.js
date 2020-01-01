@@ -27,12 +27,32 @@ import { connect, Provider } from 'react-redux';
 import { plus } from './redux/action';
 import { getStore } from './redux/configureStore';
 
-const store = getStore();
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      store: null,
+    }
+  }
+
+  componentDidMount() {
+    const store = getStore();
+    this.setState({
+      store: store
+    });
+  }
+
   render() {
+    if (!this.state.store){
+      return (
+        <View>
+          <Text>加载......</Text>
+        </View>
+      );
+    }
     return (
-      <Provider store={store}>
+      <Provider store={this.state.store}>
         <View style={{ flexDirection: 'column', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Counter1 />
           <Counter1 />
@@ -60,6 +80,7 @@ class _Counter1 extends Component {
   }
 }
 
+//映射表
 const mapStateToProps = state => {
   return {
     result: state.calculate
