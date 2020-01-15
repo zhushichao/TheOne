@@ -26,10 +26,7 @@ export default class Main extends Component {
           renderIcon={() => <Image style={styles.iconStyle} source={{ uri: 'icon_tabbar_homepage' }} />}
           renderSelectedIcon={() => <Image style={styles.iconStyle} source={{ uri: 'icon_tabbar_homepage_selected' }} />}
           onPress={() => { this.setState({ selectedTab: 'home' }) }}>
-          {/* <Home /> */}
-          <Navigation>
-
-          </Navigation>
+          <Home />
         </TabNavigator.Item>
         <TabNavigator.Item
           title="商家"
