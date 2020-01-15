@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import {
-  View, Text, StyleSheet, AppRegistry
+  View,
+  Text,
+  StyleSheet,
+  AppRegistry,
+  TextInput,
+  Image,
 } from 'react-native';
 
 export default class Home extends Component {
-  render() {
+  renderToolbar() {
     return (
-      <View style={styles.container}>
-        <Text>Home</Text>
+      <View style={{ flexDirection: 'row' }}>
+        <Text>广州</Text>
+        <TextInput placeholder="输入商家、品类、商圈"/>
+        <View>
+          <Image source={{ uri: 'icon_homepage_message' }}/>
+          <Image source={{ uri: 'icon_homepage_scan' }}/>
+        </View>
       </View>
     );
+  }
+
+  render() {
+    return <View style={styles.container}>{this.renderToolbar()}</View>;
   }
 }
 
